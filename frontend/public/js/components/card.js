@@ -29,15 +29,15 @@ export async function loadCards(containerSelector, cardIds = []){
         :cards;//Si no hay filtro, uselas todas
 
         filteredCards.forEach(card => {
-            //Reemplazar los placeholder{{...}} del template con los datos reales
+            //Reemplazar los placeholder{{}} del template con los datos reales
             let html = template
             .replace("{{title}}",card.title)
             .replace("{{icon1}}",card.icon1)
             .replace("{{icon2}}",card.icon2)
             .replace("{{description}}",card.description);
 
-            container.innerHTML += html;
-            
+            // container.innerHTML += html;
+            container.insertAdjacentHTML("beforeend", html);         
         });
 
     }catch(error){
